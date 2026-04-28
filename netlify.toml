@@ -1,0 +1,40 @@
+[[redirects]]
+  from = "/p/:uid"
+  to = "/pages/project.html"
+  status = 200
+
+[[redirects]]
+  from = "/app"
+  to = "/pages/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/docs"
+  to = "/pages/docs.html"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
+  to = "/pages/faq.html"
+  status = 200
+
+[[redirects]]
+  from = "/pricing"
+  to = "/pages/pricing.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/pages/terms.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/pages/privacy.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Jorenza-ID = "JRZ-001"
+    X-Frame-Options = "SAMEORIGIN"

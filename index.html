@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jorenza — Deploy GitHub Projects Instantly</title>
+  <meta name="description" content="Вставь ссылку на GitHub репозиторий — Jorenza развернёт его как полноценный сайт с уникальным URL за секунды." />
+  <meta property="og:title" content="Jorenza — Deploy GitHub Projects Instantly" />
+  <meta property="og:description" content="Деплой GitHub проектов в один клик. HTML, React, Vue — всё работает." />
+  <meta property="og:image" content="/img/og.png" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="/" class="logo">Jorenza<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/pages/docs.html">Docs</a>
+      <a href="/pages/faq.html">FAQ</a>
+      <a href="/pages/pricing.html">Цены</a>
+      <a href="/pages/terms.html">Условия</a>
+      <a href="/pages/privacy.html">Политика</a>
+    </div>
+    <a href="/pages/app.html" class="btn-nav">Открыть приложение →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="grid-lines"></div>
+    </div>
+    <div class="hero-content">
+      <div class="badge">⚡ Powered by GitHub Raw</div>
+      <h1 class="hero-title">
+        Деплой твоего<br/>
+        <span class="gradient-text">GitHub проекта</span><br/>
+        за 3 секунды
+      </h1>
+      <p class="hero-sub">
+        Вставь ссылку на репозиторий — Jorenza автоматически построит сайт,<br/>
+        свяжет каждый файл с raw.github.com и выдаст красивый уникальный URL.
+      </p>
+      <div class="hero-input-wrap">
+        <div class="hero-input-group">
+          <span class="input-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+          </span>
+          <input type="text" id="heroInput" placeholder="https://github.com/username/repo" class="hero-input" />
+          <button onclick="window.location='/pages/app.html?repo='+document.getElementById('heroInput').value" class="btn-hero">Deploy →</button>
+        </div>
+      </div>
+      <div class="hero-examples">
+        <span>Попробуй:</span>
+        <a href="/pages/app.html?repo=https://github.com/torvalds/linux" class="ex-tag">torvalds/linux</a>
+        <a href="/pages/app.html?repo=https://github.com/facebook/react" class="ex-tag">facebook/react</a>
+        <a href="/pages/app.html?repo=https://github.com/vercel/next.js" class="ex-tag">vercel/next.js</a>
+      </div>
+    </div>
+    <div class="hero-preview">
+      <div class="preview-window">
+        <div class="preview-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="preview-url">jorenza.app/p/xK9mN2pQ</span>
+        </div>
+        <div class="preview-code">
+          <div class="code-line"><span class="c-key">GET</span> <span class="c-url">raw.githubusercontent.com/user/repo/main/index.html</span></div>
+          <div class="code-line"><span class="c-key">GET</span> <span class="c-url">raw.githubusercontent.com/user/repo/main/style.css</span></div>
+          <div class="code-line"><span class="c-key">GET</span> <span class="c-url">raw.githubusercontent.com/user/repo/main/app.js</span></div>
+          <div class="code-line fade"><span class="c-key">✓</span> <span class="c-ok">Site deployed at jorenza.app/p/xK9mN2pQ</span></div>
+          <div class="code-line fade2"><span class="c-key">↗</span> <span class="c-ok">Short link: jrn.to/xK9mN2</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="section-label">Возможности</div>
+    <h2 class="section-title">Всё что нужно<br/>для деплоя</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <h3>Raw GitHub Links</h3>
+        <p>Каждый файл проекта автоматически маппится на raw.githubusercontent.com — прямые ссылки на исходники.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Мгновенный деплой</h3>
+        <p>HTML, CSS, JS, React, Vue — анализируем структуру репозитория и строим сайт без каких-либо конфигов.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔤</div>
+        <h3>Красивые URL</h3>
+        <p>Каждый проект получает уникальный URL вида <code>jorenza.app/p/xK9mN2pQ</code> из букв и цифр.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📎</div>
+        <h3>Короткая ссылка</h3>
+        <p>Дополнительно генерируется короткая ссылка <code>jrn.to/xK9mN2</code> для шеринга в соцсетях.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h3>Лендинг проекта</h3>
+        <p>Каждый деплой получает красивую страницу-лендинг с описанием, стеком, файлами и статистикой.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Только публичные репо</h3>
+        <p>Работаем с открытыми GitHub репозиториями — никаких токенов, никаких прав доступа.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="section-label">Как это работает</div>
+    <h2 class="section-title">3 шага до<br/>живого сайта</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Вставь ссылку</h3>
+        <p>Скопируй URL своего публичного GitHub репозитория и вставь в поле.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Анализ репо</h3>
+        <p>Jorenza через GitHub API читает структуру, определяет тип проекта и строит карту файлов.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Получи URL</h3>
+        <p>Сайт доступен по уникальной ссылке. Делись короткой ссылкой с друзьями!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo">Jorenza<span class="logo-dot">.</span></a>
+        <p>Deploy GitHub projects instantly.<br/>No config. No CLI. Just a link.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Продукт</h4>
+          <a href="/pages/app.html">Приложение</a>
+          <a href="/pages/docs.html">Документация</a>
+          <a href="/pages/faq.html">FAQ</a>
+          <a href="/pages/pricing.html">Цены</a>
+        </div>
+        <div class="footer-col">
+          <h4>Правовое</h4>
+          <a href="/pages/terms.html">Условия использования</a>
+          <a href="/pages/privacy.html">Политика конфиденциальности</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Jorenza. Все права защищены.</span>
+      <span>ID проекта: <code>JRZ-001</code></span>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

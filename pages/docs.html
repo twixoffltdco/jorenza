@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Документация — Jorenza</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="logo">Jorenza<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/pages/docs.html" style="color:var(--text)">Docs</a>
+      <a href="/pages/faq.html">FAQ</a>
+      <a href="/pages/pricing.html">Цены</a>
+      <a href="/pages/terms.html">Условия</a>
+      <a href="/pages/privacy.html">Политика</a>
+    </div>
+    <a href="/pages/app.html" class="btn-nav">Открыть приложение →</a>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-header">
+      <div class="section-label">ДОКУМЕНТАЦИЯ</div>
+      <h1>Как работает Jorenza</h1>
+      <p>Полное руководство по использованию платформы для деплоя GitHub проектов.</p>
+    </div>
+
+    <div class="page-section">
+      <h2>🚀 Быстрый старт</h2>
+      <p>Jorenza превращает любой публичный GitHub репозиторий в живой сайт за несколько секунд. Никаких конфигов, CLI или токенов — просто ссылка.</p>
+      <h3>Шаг 1: Открой приложение</h3>
+      <p>Перейди на страницу <a href="/pages/app.html" style="color:var(--accent)">приложения</a> или воспользуйся полем на главной странице.</p>
+      <h3>Шаг 2: Вставь ссылку на репозиторий</h3>
+      <p>Скопируй URL своего публичного GitHub репозитория. Он выглядит так: <code>https://github.com/username/repo-name</code></p>
+      <h3>Шаг 3: Нажми Deploy</h3>
+      <p>Jorenza автоматически:</p>
+      <ul>
+        <li>Получит информацию о репозитории через GitHub API</li>
+        <li>Построит дерево всех файлов проекта</li>
+        <li>Сгенерирует raw-ссылки на каждый файл</li>
+        <li>Выдаст уникальный URL вида <code>jorenza.app/p/xK9mN2pQaB</code></li>
+        <li>Создаст короткую ссылку <code>jrn.to/xK9mN2</code> для шеринга</li>
+      </ul>
+    </div>
+
+    <div class="page-section">
+      <h2>🔗 Система ссылок</h2>
+      <p>Jorenza использует GitHub Raw Content API для прямого доступа к файлам репозитория.</p>
+      <h3>Формат Raw URL</h3>
+      <p>Каждый файл в репозитории получает прямую ссылку вида:</p>
+      <div style="background:rgba(0,0,0,.3);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:var(--mono);font-size:.82rem;color:var(--accent3);margin:.8rem 0">
+        https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{path}
+      </div>
+      <p>Например, файл <code>src/index.js</code> в репозитории <code>user/my-app</code> ветки <code>main</code>:</p>
+      <div style="background:rgba(0,0,0,.3);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:var(--mono);font-size:.82rem;color:var(--accent3);margin:.8rem 0">
+        https://raw.githubusercontent.com/user/my-app/main/src/index.js
+      </div>
+      <h3>Уникальный URL деплоя</h3>
+      <p>Каждый деплой получает уникальный идентификатор из 10 символов (буквы и цифры), исключающих визуально похожие символы (0/O, 1/l/I):</p>
+      <div style="background:rgba(0,0,0,.3);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:var(--mono);font-size:.82rem;color:var(--accent);margin:.8rem 0">
+        jorenza.app/p/xK9mN2pQaB
+      </div>
+      <h3>Короткая ссылка</h3>
+      <p>Для удобного шеринга в соцсетях генерируется короткий код из 6 символов:</p>
+      <div style="background:rgba(0,0,0,.3);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:var(--mono);font-size:.82rem;color:var(--accent2);margin:.8rem 0">
+        jrn.to/xK9mN2
+      </div>
+    </div>
+
+    <div class="page-section">
+      <h2>⚙️ Поддерживаемые типы проектов</h2>
+      <h3>Static HTML/CSS/JS</h3>
+      <p>Простейший случай — статические сайты. Jorenza находит <code>index.html</code> как точку входа и раздаёт все связанные файлы через raw ссылки.</p>
+      <h3>React (Vite / Create React App)</h3>
+      <p>Определяется по наличию <code>package.json</code>, файлов <code>.jsx</code> или <code>.tsx</code>. Jorenza показывает структуру проекта и предоставляет ссылки на все исходники.</p>
+      <h3>Vue.js</h3>
+      <p>Определяется по файлам <code>.vue</code> или <code>vue.config.js</code>.</p>
+      <h3>Next.js</h3>
+      <p>Определяется по <code>next.config.js</code> или <code>next.config.mjs</code>.</p>
+      <h3>Другие типы</h3>
+      <p>Python, Go, TypeScript — Jorenza определит язык и тип проекта, предоставит полную карту файлов с raw-ссылками.</p>
+    </div>
+
+    <div class="page-section">
+      <h2>🆔 ID проекта</h2>
+      <p>Каждый деплой на Jorenza имеет уникальный идентификатор. Текущий ID проекта Jorenza: <code>JRZ-001</code></p>
+      <p>ID деплоев хранятся локально в браузере пользователя и используются для восстановления истории деплоев.</p>
+    </div>
+
+    <div class="page-section">
+      <h2>⚠️ Ограничения</h2>
+      <ul>
+        <li>Только <strong>публичные</strong> репозитории GitHub</li>
+        <li>Максимум <strong>150 файлов</strong> отображается в дереве (у больших репо ограничено для производительности)</li>
+        <li>Серверные проекты (Node.js бэкенды, Python Flask/Django и т.д.) — только просмотр файлов, не запуск сервера</li>
+        <li>GitHub API Rate Limit: 60 запросов в час без токена</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <span>© 2025 Jorenza. ID: <code>JRZ-001</code></span>
+      <span><a href="/" style="color:var(--muted);text-decoration:none">← Главная</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

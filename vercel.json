@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/p/:uid", "destination": "/pages/project.html" },
+    { "source": "/app", "destination": "/pages/app.html" },
+    { "source": "/docs", "destination": "/pages/docs.html" },
+    { "source": "/faq", "destination": "/pages/faq.html" },
+    { "source": "/pricing", "destination": "/pages/pricing.html" },
+    { "source": "/terms", "destination": "/pages/terms.html" },
+    { "source": "/privacy", "destination": "/pages/privacy.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Jorenza-ID", "value": "JRZ-001" }
+      ]
+    }
+  ]
+}

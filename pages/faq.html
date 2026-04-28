@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Jorenza</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="logo">Jorenza<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/pages/docs.html">Docs</a>
+      <a href="/pages/faq.html" style="color:var(--text)">FAQ</a>
+      <a href="/pages/pricing.html">Цены</a>
+      <a href="/pages/terms.html">Условия</a>
+      <a href="/pages/privacy.html">Политика</a>
+    </div>
+    <a href="/pages/app.html" class="btn-nav">Открыть приложение →</a>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-header">
+      <div class="section-label">FAQ</div>
+      <h1>Частые вопросы</h1>
+      <p>Всё что ты хотел знать о Jorenza, но боялся спросить.</p>
+    </div>
+
+    <div class="page-section">
+      <h2>Общее</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Что такое Jorenza?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          Jorenza — платформа для мгновенного деплоя публичных GitHub репозиториев. Вставляешь ссылку на репо — получаешь красивый уникальный URL для своего проекта с прямыми ссылками на все файлы через raw.githubusercontent.com.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Это бесплатно?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          Базовый план полностью бесплатный. Он включает анализ репозитория, генерацию уникального URL и короткой ссылки. Платные планы добавляют кастомные домены, аналитику и приоритетный доступ.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Нужна ли регистрация?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          Нет! Jorenza работает без регистрации и без токенов GitHub. Просто вставляй ссылку и получай результат. История деплоев сохраняется локально в браузере.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Чем Jorenza отличается от Vercel или Netlify?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          Vercel и Netlify — полноценные хостинг-платформы с CI/CD, серверными функциями и сборкой проекта. Jorenza — легковесная альтернатива для быстрого просмотра и шеринга проектов: каждый файл маппится напрямую на raw.githubusercontent.com, никакой сборки не происходит. Идеально для демо, портфолио и шеринга с друзьями.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Как выглядит URL проекта?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          Каждый деплой получает уникальный URL вида <code>jorenza.app/p/xK9mN2pQaB</code> — 10 случайных символов из букв и цифр. Дополнительно генерируется короткая ссылка <code>jrn.to/xK9mN2</code> для удобного шеринга.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <h2>Технические вопросы</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Работает ли с приватными репозиториями?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          Нет. Jorenza работает только с публичными репозиториями GitHub — без токенов авторизации. Это сделано намеренно: простота и безопасность важнее.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Что такое raw ссылки на файлы?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          raw.githubusercontent.com — CDN GitHub для прямого доступа к содержимому файлов репозитория. Jorenza строит карту всех файлов вашего проекта и предоставляет прямые ссылки вида <code>https://raw.githubusercontent.com/owner/repo/branch/path/to/file.js</code>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Поддерживается ли React / Vue / Next.js?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          Jorenza определяет тип проекта автоматически по структуре файлов. Для статических HTML проектов сайт откроется сразу. Для React/Vue/Next.js Jorenza предоставляет полную карту исходников с raw-ссылками — идеально для просмотра кода и шеринга.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Есть ли лимиты на количество файлов?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          В дереве файлов отображается до 150 файлов. Для больших репозиториев это ограничение введено для производительности интерфейса. GitHub API также имеет лимит — 60 запросов в час без токена.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Как долго хранится деплой?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          История деплоев сохраняется в localStorage вашего браузера. Деплои не удаляются автоматически — они хранятся пока вы не очистите данные браузера. В будущем планируется облачное хранение с аккаунтами.
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <h2>Шеринг</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Как поделиться проектом с друзьями?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          После деплоя Jorenza генерирует короткую ссылку <code>jrn.to/xxxxxx</code>. Её можно отправить в Telegram, Twitter, VK или любой мессенджер. При переходе по ссылке откроется лендинг вашего проекта.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Что увидит человек перейдя по короткой ссылке?<span class="arrow">▾</span></div>
+        <div class="faq-a">
+          Откроется лендинг проекта с названием репозитория, описанием, используемыми технологиями, статистикой (звёзды, форки) и прямыми ссылками на файлы. Если проект — статический HTML, будет возможность открыть сам сайт.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <span>© 2025 Jorenza. ID: <code>JRZ-001</code></span>
+      <span><a href="/" style="color:var(--muted);text-decoration:none">← Главная</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проект — Jorenza</title>
+  <meta name="description" content="Просмотр GitHub проекта через Jorenza" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <style>
+    .project-hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 3rem 4rem;
+      text-align: center;
+      position: relative;
+    }
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(124,106,255,.12), transparent),
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: auto, 60px 60px, 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 40%, transparent 100%);
+    }
+    .project-tag {
+      font-family: var(--mono);
+      font-size: .72rem;
+      background: rgba(124,106,255,.1);
+      color: var(--accent);
+      border: 1px solid rgba(124,106,255,.25);
+      padding: .3rem .8rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .project-name {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .project-desc {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .stat-row {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .stat { text-align: center; }
+    .stat-val { font-size: 1.6rem; font-weight: 800; }
+    .stat-label { font-size: .78rem; color: var(--muted); font-family: var(--mono); }
+    .action-row {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .btn-action {
+      padding: .7rem 1.6rem;
+      border-radius: 10px;
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: .9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+      border: 1px solid var(--border);
+    }
+    .btn-action.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-action.secondary { background: transparent; color: var(--text); }
+    .btn-action:hover { transform: translateY(-2px); opacity: .85; }
+    .project-content { max-width: 900px; margin: 0 auto; padding: 0 3rem 5rem; }
+    .not-found { text-align: center; padding: 5rem 2rem; color: var(--muted); }
+    .not-found h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: var(--text); }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="logo">Jorenza<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/pages/app.html">Задеплоить свой проект →</a>
+    </div>
+  </nav>
+
+  <div id="projectRoot">
+    <div class="not-found">
+      <div style="font-size:4rem;margin-bottom:1rem">🔍</div>
+      <h2>Загружаем проект…</h2>
+      <p>Если страница не загружается — проект мог быть удалён или ID неверный.</p>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Extract UID from URL: /p/xK9mN2pQaB
+      const parts = location.pathname.split('/');
+      const uid = parts[parts.length - 1] || parts[parts.length - 2];
+      const deploy = loadDeploy(uid);
+      const root = document.getElementById('projectRoot');
+
+      if (!deploy) {
+        root.innerHTML = `
+          <div class="not-found">
+            <div style="font-size:4rem;margin-bottom:1rem">😕</div>
+            <h2>Проект не найден</h2>
+            <p>ID <code style="color:var(--accent)">${uid}</code> не найден в вашем браузере.</p>
+            <p style="margin-top:.5rem">Деплои хранятся локально — попробуй на том устройстве, где делал деплой.</p>
+            <a href="/pages/app.html" style="display:inline-block;margin-top:1.5rem;padding:.7rem 1.5rem;background:var(--accent);color:#fff;border-radius:9px;text-decoration:none;font-weight:700">Задеплоить новый проект</a>
+          </div>`;
+        return;
+      }
+
+      document.title = `${deploy.repo} — Jorenza`;
+
+      const shareText = encodeURIComponent(`${deploy.repo}: ${deploy.description}`);
+      const tgShare = `https://t.me/share/url?url=${encodeURIComponent(deploy.shortUrl)}&text=${encodeURIComponent(deploy.repo)}`;
+      const twShare = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(deploy.shortUrl)}`;
+
+      const filesHtml = deploy.fileMap.slice(0, 20).map(f => `
+        <div class="file-tree-item">
+          <span class="file-icon">${f.icon}</span>
+          <span class="file-name">${f.path}</span>
+          <a href="${f.rawUrl}" target="_blank" class="file-raw">raw ↗</a>
+        </div>`).join('');
+
+      root.innerHTML = `
+        <div class="project-hero">
+          <div class="project-tag">⚡ Powered by Jorenza · ID: ${deploy.uid}</div>
+          <h1 class="project-name">${deploy.repo}</h1>
+          <p class="project-desc">${deploy.description}</p>
+          <div class="stat-row">
+            <div class="stat"><div class="stat-val">⭐ ${deploy.stars}</div><div class="stat-label">Stars</div></div>
+            <div class="stat"><div class="stat-val">🍴 ${deploy.forks}</div><div class="stat-label">Forks</div></div>
+            <div class="stat"><div class="stat-val">${deploy.fileMap.length}</div><div class="stat-label">Files</div></div>
+            <div class="stat"><div class="stat-val">${deploy.projectType}</div><div class="stat-label">Type</div></div>
+          </div>
+          <div class="action-row">
+            <a href="${deploy.repoUrl}" target="_blank" class="btn-action primary">Открыть на GitHub ↗</a>
+            <a href="${twShare}" target="_blank" class="btn-action secondary">Twitter</a>
+            <a href="${tgShare}" target="_blank" class="btn-action secondary">Telegram</a>
+            <button class="btn-action secondary" onclick="copyToClipboard('${deploy.shortUrl}', this)">Копировать jrn.to</button>
+          </div>
+        </div>
+
+        <div class="project-content">
+          <div class="result-card">
+            <h3>🔗 Ссылки</h3>
+            <div class="url-box"><code>${deploy.deployUrl}</code><button class="btn-copy" onclick="copyToClipboard('${deploy.deployUrl}', this)">Копировать</button></div>
+            <div class="url-box"><code>${deploy.shortUrl}</code><button class="btn-copy" onclick="copyToClipboard('${deploy.shortUrl}', this)">Короткая</button></div>
+          </div>
+          <div class="result-card">
+            <h3>🗂️ Файлы проекта (первые 20)</h3>
+            <div class="file-tree">${filesHtml}</div>
+            ${deploy.fileMap.length > 20 ? `<p style="color:var(--muted);font-size:.82rem;margin-top:.8rem;font-family:var(--mono)">...и ещё ${deploy.fileMap.length - 20} файлов</p>` : ''}
+          </div>
+          <div class="result-card">
+            <div class="tag-row">
+              <span class="tag">${deploy.projectType}</span>
+              ${deploy.language ? `<span class="tag">${deploy.language}</span>` : ''}
+              <span class="tag">🌿 ${deploy.branch}</span>
+              <span class="tag">${deploy.owner}/${deploy.repo}</span>
+            </div>
+          </div>
+        </div>`;
+    });
+  </script>
+</body>
+</html>

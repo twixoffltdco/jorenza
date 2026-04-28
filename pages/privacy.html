@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Политика конфиденциальности — Jorenza</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="logo">Jorenza<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/pages/docs.html">Docs</a>
+      <a href="/pages/faq.html">FAQ</a>
+      <a href="/pages/terms.html">Условия</a>
+      <a href="/pages/privacy.html" style="color:var(--text)">Политика</a>
+    </div>
+    <a href="/pages/app.html" class="btn-nav">Открыть приложение →</a>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-header">
+      <div class="section-label">ПРАВОВОЕ</div>
+      <h1>Политика конфиденциальности</h1>
+      <p>Последнее обновление: 1 января 2025 г. | ID документа: <code style="font-family:var(--mono);color:var(--accent)">JRZ-PRIVACY-001</code></p>
+    </div>
+
+    <div class="page-section">
+      <h2>1. Введение</h2>
+      <p>Jorenza («мы», «нас», «наш») уважает вашу конфиденциальность. Эта Политика описывает, какие данные мы собираем, как их используем и как защищаем.</p>
+      <p>Jorenza спроектирован с принципом «минимум данных» — мы собираем только то, что необходимо для работы Сервиса.</p>
+    </div>
+
+    <div class="page-section">
+      <h2>2. Данные, которые мы НЕ собираем</h2>
+      <p>В отличие от большинства сервисов, Jorenza не собирает:</p>
+      <ul>
+        <li>Имена и фамилии пользователей</li>
+        <li>Адреса электронной почты (без регистрации)</li>
+        <li>Пароли или токены GitHub</li>
+        <li>Содержимое файлов репозиториев</li>
+        <li>IP-адреса в постоянных логах</li>
+        <li>Cookies для трекинга</li>
+      </ul>
+    </div>
+
+    <div class="page-section">
+      <h2>3. Данные, которые мы обрабатываем</h2>
+      <h3>3.1 URL репозиториев</h3>
+      <p>Когда вы вставляете ссылку на GitHub репозиторий, мы обращаемся к публичному GitHub API для получения метаданных (название, описание, статистика). Этот запрос не требует авторизации и не передаёт нам личные данные.</p>
+      <h3>3.2 Локальное хранилище браузера</h3>
+      <p>История деплоев сохраняется в <code>localStorage</code> вашего браузера. Эти данные хранятся только на вашем устройстве и никогда не передаются на наши серверы.</p>
+      <h3>3.3 Технические логи</h3>
+      <p>Стандартные веб-сервер логи могут содержать: время запроса, тип браузера, запрошенный URL. Логи хранятся не более 7 дней и используются исключительно для диагностики технических проблем.</p>
+    </div>
+
+    <div class="page-section">
+      <h2>4. Третьи стороны</h2>
+      <h3>GitHub API</h3>
+      <p>Jorenza использует публичный GitHub REST API. При каждом запросе GitHub может фиксировать ваш IP-адрес согласно собственной политике конфиденциальности (docs.github.com/privacy).</p>
+      <h3>Google Fonts</h3>
+      <p>Интерфейс загружает шрифты через Google Fonts CDN. Google может логировать запросы шрифтов. Вы можете заблокировать это через соответствующие браузерные расширения.</p>
+    </div>
+
+    <div class="page-section">
+      <h2>5. Безопасность данных</h2>
+      <p>Поскольку Jorenza не хранит персональные данные на серверах, риск утечки данных минимален. Все соединения используют HTTPS-шифрование.</p>
+      <p>История деплоев в localStorage защищена стандартными механизмами браузерной безопасности (same-origin policy).</p>
+    </div>
+
+    <div class="page-section">
+      <h2>6. Ваши права</h2>
+      <p>Вы имеете право в любой момент:</p>
+      <ul>
+        <li>Очистить историю деплоев (через настройки браузера → очистить localStorage)</li>
+        <li>Запросить информацию о любых данных, связанных с вами</li>
+        <li>Потребовать удаления любых данных</li>
+      </ul>
+      <p>Для запросов пишите: <code>privacy@jorenza.app</code></p>
+    </div>
+
+    <div class="page-section">
+      <h2>7. Изменения политики</h2>
+      <p>При существенных изменениях политики конфиденциальности мы уведомим пользователей на главной странице. Дата последнего обновления указана в заголовке этого документа.</p>
+      <p>ID документа: <code>JRZ-PRIVACY-001</code> | Версия: <code>1.0</code></p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <span>© 2025 Jorenza. ID: <code>JRZ-001</code></span>
+      <span><a href="/" style="color:var(--muted);text-decoration:none">← Главная</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

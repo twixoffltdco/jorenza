@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Приложение — Jorenza</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="logo">Jorenza<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/pages/docs.html">Docs</a>
+      <a href="/pages/faq.html">FAQ</a>
+      <a href="/pages/pricing.html">Цены</a>
+    </div>
+  </nav>
+
+  <div class="app-page" id="appPage">
+    <!-- Sidebar -->
+    <div class="app-sidebar">
+      <h2>🚀 Deploy проекта</h2>
+      <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem;line-height:1.6">
+        Вставь ссылку на публичный GitHub репозиторий. Jorenza проанализирует его структуру и задеплоит за секунды.
+      </p>
+      <textarea
+        id="repoInput"
+        class="app-input"
+        rows="2"
+        placeholder="https://github.com/username/repo"
+      ></textarea>
+      <button id="deployBtn" class="btn-primary">🚀 Deploy</button>
+
+      <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+        <p style="font-size:.75rem;color:var(--muted);font-family:var(--mono);margin-bottom:.8rem">ПОДДЕРЖИВАЕМЫЕ ТИПЫ</p>
+        <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.83rem;color:var(--muted)">
+          <span>🌐 Static HTML/CSS/JS</span>
+          <span>⚛️ React (Vite/CRA)</span>
+          <span>💚 Vue.js</span>
+          <span>🔷 TypeScript</span>
+          <span>📝 Markdown docs</span>
+          <span>🐍 Python (info)</span>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+        <p style="font-size:.75rem;color:var(--muted);font-family:var(--mono);margin-bottom:.8rem">КАК РАБОТАЕТ URL</p>
+        <p style="font-size:.8rem;color:var(--muted);line-height:1.6">
+          Каждый файл репо маппится на<br/>
+          <code style="color:var(--accent);font-family:var(--mono);font-size:.72rem">raw.githubusercontent.com</code><br/>
+          Уникальный ID из букв и цифр выглядит вот так:<br/>
+          <code style="color:var(--accent3);font-family:var(--mono);font-size:.72rem">jorenza.app/p/xK9mN2pQaB</code>
+        </p>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="appResults">
+      <div class="empty-state">
+        <div class="empty-icon">⚡</div>
+        <p>Вставь ссылку на GitHub репозиторий<br/>и нажми Deploy — всё остальное сделаем мы.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
